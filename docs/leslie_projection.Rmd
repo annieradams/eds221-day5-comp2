@@ -43,16 +43,16 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# The line below is creating a sequence of years that going to be iterated over in our for loop
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+# The line below creates an empty matrix that is going to be filled within our for loop, it uses fish years for column and time years for rows
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# The line below records all the columns in the first row into the empty matrix, because its our initial condition so we can enter it in row one. 
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
+# The for loop below iterates from 2 to 8 and takes the dot product of fish leslie and the previous rows data in the proj_year matrix, this outputs a 4 x 4 matrix.  we start at 2 because our first term is already set. 
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
